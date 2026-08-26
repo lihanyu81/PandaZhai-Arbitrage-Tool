@@ -77,7 +77,7 @@ chmod +x panda-node-entropy panda-arb-entropy
 
 PopDEX 和 RBLighter 节点分别进入对应目录后，运行各自的 `panda-node-*` 即可。首次启动会显示节点 2FA 二维码；在管理中心添加节点时，填写节点名称、IP、端口和该节点验证码。
 
-RBLighter 新版不再要求 `.env`。工具界面中的“运行配置”可以填写 Lighter、RBLighter 和 Telegram 配置，内容保存在 `rblighter-node/config.json`。保存后请在管理中心重启 RBLighter 节点；API 私钥和 Bot Token 不会回显到浏览器。
+RBLighter 新版不再要求 `.env`。工具界面中的“运行配置”可以填写 Lighter、RBLighter 和 Telegram 配置，内容保存在节点数据目录下的 `tool-data/config.json`。保存后请在管理中心重启 RBLighter 节点；API 私钥和 Bot Token 不会回显到浏览器。
 
 如需使用自定义工具文件，可使用 `--tool-executable` 指定路径；`--command` 仍保留给开发测试和旧版部署。
 
