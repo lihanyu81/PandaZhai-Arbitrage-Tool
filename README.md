@@ -39,7 +39,31 @@ chmod +x panda-manager
 
 节点服务器只运行对应节点入口，不运行管理页面。节点首次运行会显示节点 2FA 二维码；在管理中心添加节点时，只填写节点名称、节点 IP、节点端口和该节点验证码。管理中心会自动识别工具类型，并在验证后启动工具。
 
-示例：
+PopDEX-Lighter 节点：
+
+```bash
+cd popdex-server
+chmod +x panda-node-popdex panda-arb-popdex
+./panda-node-popdex \
+  --data-dir ./popdex-node \
+  --port 9100 \
+  --child-port 18000 \
+  --show-qr
+```
+
+RBLighter-Lighter 节点：
+
+```bash
+cd rblighter-server
+chmod +x panda-node-rblighter panda-arb-rblighter
+./panda-node-rblighter \
+  --data-dir ./rblighter-node \
+  --port 9100 \
+  --child-port 18000 \
+  --show-qr
+```
+
+Entropy-Lighter 节点：
 
 ```bash
 cd entropy-server
