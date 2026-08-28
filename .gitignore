@@ -1,9 +1,0 @@
-manager-data/
-node-data/
-**/auth.json
-**/nodes.json
-**/config.json
-**/*.db
-**/.env
-**/.env.*
-__pycache__/

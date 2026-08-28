@@ -1,94 +1,79 @@
-# PandaZhai Arbitrage Control Release
+# 熊猫寨套利节点封包
 
-这是 Linux x86_64 服务器发布包。管理程序、节点通信程序和三个对应的套利执行文件均为二进制文件，不包含 Python 源代码、测试、`.env`、私钥、2FA 文件或数据库。
+本仓库只提供三种 Linux x86_64 套利节点封包，不包含 Python 源码、用户配置、数据库、私钥或 `.env`：
 
-管理中心现在使用邮箱 + 密码 + TOTP 2FA；用户、节点绑定、会话、审计日志和加密令牌持久化在管理中心 SQLite 数据库中。首次启动需要初始化管理员邮箱和密码。
+- `entropy-lighter`
+- `popdex-lighter`
+- `rblighter-lighter`
 
-## 四台服务器目录
+每台服务器安装一种节点。支持 Ubuntu/Debian x86_64，使用 systemd 常驻运行。
 
-每个目录都是独立部署单元，不需要另外复制 `panda-control-runtime`：
+## 一键部署
+
+Entropy ↔ Lighter：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/main/install.sh | sudo bash -s -- entropy-lighter
+```
+
+PopDEX ↔ Lighter：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/main/install.sh | sudo bash -s -- popdex-lighter
+```
+
+RBLighter ↔ Lighter：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/main/install.sh | sudo bash -s -- rblighter-lighter
+```
+
+安装器会自动完成以下操作：
+
+1. 检查 root 权限、Linux x86_64 架构和所需命令。
+2. 下载对应节点程序与套利程序并核验 SHA-256。
+3. 创建权限受限的 `panda` 系统用户和数据目录。
+4. 首次初始化节点认证信息。
+5. 创建并启动 systemd 服务。
+6. 检查节点健康状态并显示服务信息。
+
+默认节点通信端口为 `9100`，工具子进程仅监听本机 `127.0.0.1:18000`。自定义端口：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/main/install.sh \
+  | sudo bash -s -- entropy-lighter --port 9200 --child-port 19000
+```
+
+## 安装后管理
+
+以 Entropy 节点为例：
+
+```bash
+sudo systemctl status panda-entropy
+sudo journalctl -u panda-entropy -f
+sudo systemctl restart panda-entropy
+```
+
+另外两个服务名分别为 `panda-popdex` 和 `panda-rblighter`。程序和数据位置：
 
 ```text
-manager-server/
-└── panda-manager
-
-popdex-server/
-├── panda-node-popdex
-└── panda-arb-popdex
-
-rblighter-server/
-├── panda-node-rblighter
-└── panda-arb-rblighter
-
-entropy-server/
-├── panda-node-entropy
-└── panda-arb-entropy
+/opt/pandazhai/<节点简称>/
+/var/lib/pandazhai/<节点简称>/
 ```
 
-节点程序会自动启动同目录下对应的套利执行文件。每个服务器只需上传自己的目录。
+交易所凭据和 Telegram 配置保存在节点数据目录的 `tool-data/config.json`，敏感字段不会回显。首次部署请保持 DRY RUN，确认账户、市场映射、网络和风控参数后再开启实盘。
 
-## 管理中心
-
-```bash
-cd manager-server
-chmod +x panda-manager
-./panda-manager --data-dir ./manager-data --host 0.0.0.0 --port 9000
-```
-
-首次运行会在终端交互初始化管理员邮箱和密码，并显示一次管理中心 2FA 二维码。浏览器访问 `http://管理中心IP:9000` 登录。生产环境请将本机 `127.0.0.1:9000` 通过 Caddy/Nginx 反代到 HTTPS 443。
-
-## 工具节点
-
-节点服务器只运行对应节点入口，不运行管理页面。节点首次运行会显示节点 2FA 二维码；在管理中心添加节点时，只填写节点名称、节点 IP、节点端口和该节点验证码。管理中心会自动识别工具类型，并在验证后启动工具。
-
-PopDEX-Lighter 节点：
+## 手动校验
 
 ```bash
-cd popdex-server
-chmod +x panda-node-popdex panda-arb-popdex
-./panda-node-popdex \
-  --data-dir ./popdex-node \
-  --port 9100 \
-  --child-port 18000 \
-  --show-qr
-```
-
-RBLighter-Lighter 节点：
-
-```bash
-cd rblighter-server
-chmod +x panda-node-rblighter panda-arb-rblighter
-./panda-node-rblighter \
-  --data-dir ./rblighter-node \
-  --port 9100 \
-  --child-port 18000 \
-  --show-qr
-```
-
-Entropy-Lighter 节点：
-
-```bash
-cd entropy-server
-chmod +x panda-node-entropy panda-arb-entropy
-./panda-node-entropy \
-  --data-dir ./entropy-node \
-  --port 9100 \
-  --child-port 18000 \
-  --show-qr
-```
-
-PopDEX 和 RBLighter 节点分别进入对应目录后，运行各自的 `panda-node-*` 即可。首次启动会显示节点 2FA 二维码；在管理中心添加节点时，填写节点名称、IP、端口和该节点验证码。
-
-PopDEX、RBLighter 和 Entropy 均不读取 `.env`，也不提供 `--env`。工具界面中的“配置/运行配置”可以填写对应交易所和 Telegram 配置，内容分别保存在节点数据目录下的 `tool-data/config.json`。保存配置时需要再次输入管理中心 2FA，保存后请在管理中心重启对应节点；API 私钥和 Bot Token 不会回显到浏览器。PopDEX Agent 使用权限收紧的 `agent.json`。
-
-如需使用自定义工具文件，可使用 `--tool-executable` 指定路径；`--command` 仍保留给开发测试和旧版部署。
-
-管理中心会通过节点令牌转发工具界面，浏览器不直接访问工具端口。节点的工具进程绑定到本机回环地址；建议防火墙只允许管理中心访问节点通信端口。
-
-## 校验
-
-```bash
+cd packages/entropy-lighter
 sha256sum -c SHA256SUMS
 ```
 
-仅支持 Linux x86_64；不能直接在 macOS 或 Windows 上运行。套利执行文件的版本应与其目录对应，不要交叉替换。
+## 安全建议
+
+- 防火墙只允许管理端 IP 访问节点通信端口。
+- 不要将工具子进程端口暴露到公网。
+- 生产环境使用专用账户或子账户，并限制资金和权限。
+- 使用 NTP/chrony 保持服务器时间同步。
+- 本封包仅支持 Linux x86_64，不支持 ARM、Windows 或 macOS。
