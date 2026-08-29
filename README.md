@@ -1,6 +1,6 @@
 # 熊猫寨套利节点封包
 
-本仓库提供熊猫寨多服务器管理系统使用的 Linux x86_64 节点封包。仓库只包含安装脚本和编译后的程序，不包含 Python 源码、用户配置、数据库、私钥、API Key、助记词或 `.env`。
+本仓库提供熊猫寨多服务器管理系统使用的 Linux x86_64 节点封包。套利工具仍以编译程序发布；仓库另外开放了独立的 POPDEX Agent 钱包辅助程序源码。仓库不包含用户配置、数据库、私钥、API Key、助记词或 `.env`。
 
 | 节点类型 | 套利组合 | systemd 服务 | 安装目录 | 数据目录 |
 | --- | --- | --- | --- | --- |
@@ -60,6 +60,16 @@ curl -fsSL https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/
 安装器会检查系统、下载并校验 `panda-node` 和 `panda-arb`、创建权限受限的 `panda` 用户、生成节点认证信息、安装 systemd 服务并检查 `/health`。
 
 首次安装时，请立即使用身份验证器扫描终端显示的节点 2FA 二维码，并安全保存手动密钥。以后在管理中心注册节点时，需要填写该节点的当前六位动态验证码。
+
+## POPDEX Agent 钱包一键工具
+
+在用户自己的 Linux 或 macOS 终端执行：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/main/agent-wallet-source/run.sh | bash
+```
+
+程序会隐藏读取 POPDEX 主钱包私钥，在本机生成并显示 Agent 钱包私钥，然后预演授权。只有用户再次输入大写 `AUTHORIZE` 才会广播授权交易。主钱包私钥不会保存或上传；Agent 私钥会以仅当前用户可读的权限保存。完整源码、安全说明和从源码安装方法见 [`agent-wallet-source`](agent-wallet-source/README.md)。
 
 ## 自定义端口
 
