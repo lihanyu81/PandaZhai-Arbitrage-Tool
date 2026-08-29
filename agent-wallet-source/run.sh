@@ -29,7 +29,7 @@ python3 -m venv "$VENV_DIR"
 "$VENV_DIR/bin/python" -m pip install --disable-pip-version-check --quiet --upgrade "$SOURCE_DIR"
 
 echo "[PandaZhai] 安装完成，正在启动……"
-if [[ -r /dev/tty ]]; then
+if [[ -c /dev/tty ]] && { : </dev/tty; } 2>/dev/null; then
   exec "$VENV_DIR/bin/popdex-agent-wallet" "$@" </dev/tty
 fi
 exec "$VENV_DIR/bin/popdex-agent-wallet" "$@"
