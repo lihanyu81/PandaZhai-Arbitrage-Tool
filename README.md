@@ -7,6 +7,7 @@
 | `entropy-lighter` | Entropy ↔ Lighter | `panda-entropy` | `/opt/pandazhai/entropy` | `/var/lib/pandazhai/entropy` |
 | `popdex-lighter` | PopDEX ↔ Lighter | `panda-popdex` | `/opt/pandazhai/popdex` | `/var/lib/pandazhai/popdex` |
 | `rblighter-lighter` | RBLighter ↔ Lighter | `panda-rblighter` | `/opt/pandazhai/rblighter` | `/var/lib/pandazhai/rblighter` |
+| `vanta-lighter` | Vanta ↔ Lighter | `panda-vanta` | `/opt/pandazhai/vanta` | `/var/lib/pandazhai/vanta` |
 
 每台服务器建议只安装一种节点。当前仅支持 Ubuntu/Debian Linux x86_64（amd64），使用 systemd 常驻运行。
 
@@ -57,9 +58,22 @@ curl -fsSL https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/
   | sudo bash -s -- rblighter-lighter
 ```
 
+Vanta ↔ Lighter：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/main/install.sh \
+  | sudo bash -s -- vanta-lighter
+```
+
 安装器会检查系统、下载并校验 `panda-node` 和 `panda-arb`、创建权限受限的 `panda` 用户、生成节点认证信息、安装 systemd 服务并检查 `/health`。
 
 首次安装时，请立即使用身份验证器扫描终端显示的节点 2FA 二维码，并安全保存手动密钥。以后在管理中心注册节点时，需要填写该节点的当前六位动态验证码。
+
+Vanta 用户请使用熊猫寨注册链接注册账号：
+
+```text
+https://app.vanta.exchange?ref=PANDAZHAI
+```
 
 ## POPDEX Agent 钱包一键工具
 
@@ -151,6 +165,21 @@ curl -fsS http://127.0.0.1:9100/health
 工具配置位于对应数据目录的 `tool-data/config.json`。交易所凭据和 Telegram 配置不会由管理中心明文回显。备份或迁移数据目录时应保持严格的文件权限。
 
 保存配置时，节点会先保留上一份可用配置，再使用新配置重启工具。如果新配置导致启动失败，节点会自动恢复上一份配置并重新启动界面，同时将具体启动错误返回给管理中心。配置失败后无需登录服务器手工修改 JSON。
+
+## 清除节点
+
+清除命令会停止服务，并删除该节点程序、配置、数据库、注册信息和节点 2FA。需要保留的数据请先备份。以下以 Vanta 为例：
+
+```bash
+sudo systemctl disable --now panda-vanta.service
+
+sudo rm -f -- /etc/systemd/system/panda-vanta.service
+sudo rm -rf -- /opt/pandazhai/vanta
+sudo rm -rf -- /var/lib/pandazhai/vanta
+
+sudo systemctl daemon-reload
+sudo systemctl reset-failed
+```
 
 ## 更新节点程序
 
