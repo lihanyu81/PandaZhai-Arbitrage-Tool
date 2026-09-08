@@ -8,6 +8,7 @@
 | `popdex-lighter` | PopDEX ↔ Lighter | `panda-popdex` | `/opt/pandazhai/popdex` | `/var/lib/pandazhai/popdex` |
 | `rblighter-lighter` | RBLighter ↔ Lighter | `panda-rblighter` | `/opt/pandazhai/rblighter` | `/var/lib/pandazhai/rblighter` |
 | `vanta-lighter` | Vanta ↔ Lighter | `panda-vanta` | `/opt/pandazhai/vanta` | `/var/lib/pandazhai/vanta` |
+| `arcus-lighter` | Arcus ↔ Lighter | `panda-arcus` | `/opt/pandazhai/arcus` | `/var/lib/pandazhai/arcus` |
 
 每台服务器建议只安装一种节点。当前仅支持 Ubuntu/Debian Linux x86_64（amd64），使用 systemd 常驻运行。
 
@@ -64,6 +65,15 @@ Vanta ↔ Lighter：
 curl -fsSL https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/main/install.sh \
   | sudo bash -s -- vanta-lighter
 ```
+
+Arcus ↔ Lighter：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/main/install.sh \
+  | sudo bash -s -- arcus-lighter
+```
+
+Arcus 注册链接：[https://app.arcus.xyz/ref/CHOU](https://app.arcus.xyz/ref/CHOU)。
 
 安装器会检查系统、下载并校验 `panda-node` 和 `panda-arb`、创建权限受限的 `panda` 用户、生成节点认证信息、安装 systemd 服务并检查 `/health`。
 
@@ -176,6 +186,19 @@ sudo systemctl disable --now panda-vanta.service
 sudo rm -f -- /etc/systemd/system/panda-vanta.service
 sudo rm -rf -- /opt/pandazhai/vanta
 sudo rm -rf -- /var/lib/pandazhai/vanta
+
+sudo systemctl daemon-reload
+sudo systemctl reset-failed
+```
+
+Arcus ↔ Lighter 清除命令：
+
+```bash
+sudo systemctl disable --now panda-arcus.service
+
+sudo rm -f -- /etc/systemd/system/panda-arcus.service
+sudo rm -rf -- /opt/pandazhai/arcus
+sudo rm -rf -- /var/lib/pandazhai/arcus
 
 sudo systemctl daemon-reload
 sudo systemctl reset-failed

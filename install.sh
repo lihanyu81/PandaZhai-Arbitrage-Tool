@@ -9,7 +9,7 @@ info() { echo "[PandaZhai] $*"; }
 [[ $(uname -m) == x86_64 ]] || die "仅支持 x86_64/amd64，当前架构：$(uname -m)。"
 
 TOOL="${1:-}"
-[[ -n "$TOOL" ]] || die "缺少节点类型：entropy-lighter、popdex-lighter、rblighter-lighter 或 vanta-lighter。"
+[[ -n "$TOOL" ]] || die "缺少节点类型：entropy-lighter、popdex-lighter、rblighter-lighter、vanta-lighter 或 arcus-lighter。"
 shift
 
 PORT=9100
@@ -30,6 +30,7 @@ case "$TOOL" in
   popdex-lighter) SHORT=popdex ;;
   rblighter-lighter) SHORT=rblighter ;;
   vanta-lighter) SHORT=vanta ;;
+  arcus-lighter) SHORT=arcus ;;
   *) die "不支持的节点类型：$TOOL" ;;
 esac
 
