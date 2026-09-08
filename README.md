@@ -9,6 +9,7 @@
 | `rblighter-lighter` | RBLighter ↔ Lighter | `panda-rblighter` | `/opt/pandazhai/rblighter` | `/var/lib/pandazhai/rblighter` |
 | `vanta-lighter` | Vanta ↔ Lighter | `panda-vanta` | `/opt/pandazhai/vanta` | `/var/lib/pandazhai/vanta` |
 | `arcus-lighter` | Arcus ↔ Lighter | `panda-arcus` | `/opt/pandazhai/arcus` | `/var/lib/pandazhai/arcus` |
+| `decibel-lighter` | Decibel ↔ Lighter | `panda-decibel` | `/opt/pandazhai/decibel` | `/var/lib/pandazhai/decibel` |
 
 每台服务器建议只安装一种节点。当前仅支持 Ubuntu/Debian Linux x86_64（amd64），使用 systemd 常驻运行。
 
@@ -74,6 +75,17 @@ curl -fsSL https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/
 ```
 
 Arcus 注册链接：[https://app.arcus.xyz/ref/CHOU](https://app.arcus.xyz/ref/CHOU)。
+
+Decibel ↔ Lighter：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/main/install.sh \
+  | sudo bash -s -- decibel-lighter
+```
+
+Decibel 注册链接：暂留空（目前暂无）。
+
+Decibel 封包在 Ubuntu 24.04（glibc 2.39）构建，需使用 glibc 2.39 或更新的 Linux x86_64 系统。配置需要交易子账户地址、Geomi API Key 和已授权的 API Wallet Ed25519 私钥；API Wallet 需持有 APT 支付 Gas。默认模拟模式，尚未进行真实成交验证。
 
 安装器会检查系统、下载并校验 `panda-node` 和 `panda-arb`、创建权限受限的 `panda` 用户、生成节点认证信息、安装 systemd 服务并检查 `/health`。
 
@@ -199,6 +211,19 @@ sudo systemctl disable --now panda-arcus.service
 sudo rm -f -- /etc/systemd/system/panda-arcus.service
 sudo rm -rf -- /opt/pandazhai/arcus
 sudo rm -rf -- /var/lib/pandazhai/arcus
+
+sudo systemctl daemon-reload
+sudo systemctl reset-failed
+```
+
+Decibel ↔ Lighter 清除命令：
+
+```bash
+sudo systemctl disable --now panda-decibel.service
+
+sudo rm -f -- /etc/systemd/system/panda-decibel.service
+sudo rm -rf -- /opt/pandazhai/decibel
+sudo rm -rf -- /var/lib/pandazhai/decibel
 
 sudo systemctl daemon-reload
 sudo systemctl reset-failed
