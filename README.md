@@ -82,7 +82,17 @@ Arcus-Lighter **0.1.1** 修复成交回报超时及对账后净价差缺失。�
 curl -fsSL https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/main/packages/arcus-lighter/update.sh | sudo bash
 ```
 
-脚本先校验文件、检查任务状态，再备份并更新策略程序；保留账户配置、节点 2FA、历史账本、服务配置及端口。存在运行任务或未确认订单会拒绝更新。更新后打开节点，核对版本、仓位和 STEP 后继续任务；历史净价差自动分批补全，或点击“补查历史成交”。停止服务不会自动平仓，升级不要运行清除命令。详见 [0.1.1 更新说明](packages/arcus-lighter/RELEASE-0.1.1.md)。
+脚本先校验文件、检查任务状态，再停止服务、完整备份并更新策略程序；保留账户配置、节点 2FA、历史账本、服务配置及端口。普通更新仍拒绝运行任务或未确认执行。
+
+如果旧版卡在 **风险退出待确认 / RISK_EXIT_PENDING**，导致提示“未确认执行、风险退出记录”而无法更新，使用专门的恢复更新命令：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/main/packages/arcus-lighter/update.sh | sudo bash -s -- --recover-exit
+```
+
+恢复模式需要 `python3`，只允许原订单可追踪的风险退出记录；普通运行、执行、恢复任务及其他未确认执行仍会拦截。脚本在停服前后各检查一次，停止全部服务子进程后备份到 `/var/backups/pandazhai/arcus/`，不删除记录或改写执行状态；更新失败会尝试恢复原程序和服务状态，账本不回退。
+
+更新后打开节点启动新版，它会先查询原平仓订单并核对实际仓位：确认退出完成后变为 `STOPPED`；若存在残仓，则按已有退出指令继续减仓。无法确认的原单仍保持待核验，不直接标成功或重复提交原单。恢复更新不会自动开启新的套利任务。确认退出完成后再手动启动任务；历史净价差可点击“补查历史成交”补全。升级不要运行清除命令。详见 [0.1.1 更新说明](packages/arcus-lighter/RELEASE-0.1.1.md)。
 
 
 Decibel ↔ Lighter：
