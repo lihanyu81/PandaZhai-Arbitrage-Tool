@@ -55,6 +55,14 @@ curl -fsSL https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/
 
 0.5.0 整合风险退出恢复与 ERROR 持续监控：错误状态下继续核验原订单和仓位，保留退出指令；核验通过后保持暂停，人工继续才能解除开仓锁定。升级保留原配置、节点认证与账本。详见 [0.5.0 更新说明](packages/popdex-lighter/RELEASE-0.5.0.md)。
 
+已安装 PopDEX-Lighter 的用户，可用以下命令原地升级到 **0.5.0**：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/main/packages/popdex-lighter/update.sh | sudo bash
+```
+
+更新脚本自动校验文件并备份，保留原配置、节点认证、账本及端口，不覆盖服务配置。请先暂停运行中的任务并等待本次执行结束；ERROR 任务保留原记录，由新版继续核验，仍需人工继续才会恢复开仓。备份位于 `/var/backups/pandazhai/popdex/`。停止服务不会发出平仓指令。
+
 RBLighter ↔ Lighter：
 
 ```bash
