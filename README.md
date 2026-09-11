@@ -76,6 +76,15 @@ curl -fsSL https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/
 
 Arcus 注册链接：[https://app.arcus.xyz/ref/CHOU](https://app.arcus.xyz/ref/CHOU)。
 
+Arcus-Lighter **0.1.1** 修复成交回报超时及对账后净价差缺失。已有节点请在界面暂停任务，等待执行结束，再运行保留数据的更新命令：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/main/packages/arcus-lighter/update.sh | sudo bash
+```
+
+脚本先校验文件、检查任务状态，再备份并更新策略程序；保留账户配置、节点 2FA、历史账本、服务配置及端口。存在运行任务或未确认订单会拒绝更新。更新后打开节点，核对版本、仓位和 STEP 后继续任务；历史净价差自动分批补全，或点击“补查历史成交”。停止服务不会自动平仓，升级不要运行清除命令。详见 [0.1.1 更新说明](packages/arcus-lighter/RELEASE-0.1.1.md)。
+
+
 Decibel ↔ Lighter：
 
 ```bash
