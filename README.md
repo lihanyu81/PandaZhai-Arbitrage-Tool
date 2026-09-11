@@ -46,12 +46,14 @@ curl -fsSL https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/
   | sudo bash -s -- entropy-lighter
 ```
 
-PopDEX ↔ Lighter：
+PopDEX ↔ Lighter（**0.5.0**）：
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/main/install.sh \
   | sudo bash -s -- popdex-lighter
 ```
+
+0.5.0 整合风险退出恢复与 ERROR 持续监控：错误状态下继续核验原订单和仓位，保留退出指令；核验通过后保持暂停，人工继续才能解除开仓锁定。升级保留原配置、节点认证与账本。详见 [0.5.0 更新说明](packages/popdex-lighter/RELEASE-0.5.0.md)。
 
 RBLighter ↔ Lighter：
 
