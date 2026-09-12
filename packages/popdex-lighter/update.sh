@@ -88,7 +88,7 @@ except Exception as exc:
     sys.exit(2)
 PYCODE
 }
-release_ref="ad3ab05ea6348c27e0c203425db02a2de94c2e6b"
+release_ref="7eed320f4bdea5b8cca30b233527b96f00df83cf"
 base="https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/$release_ref/packages/popdex-lighter"
 curl -fL --retry 3 "$base/SHA256SUMS" -o "$temporary/SHA256SUMS"
 curl -fL --retry 3 "$base/panda-arb" -o "$temporary/panda-arb"
