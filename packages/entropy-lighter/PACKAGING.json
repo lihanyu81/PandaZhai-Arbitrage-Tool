@@ -1,0 +1,7 @@
+{
+  "packaging_revision": "20260912-source-clean",
+  "tool_version": "0.2.0",
+  "loose_application_python_source": false,
+  "runtime_payloads_unchanged": true,
+  "pyinstaller_bytecode_is_not_encrypted": true
+}
