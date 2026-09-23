@@ -1,0 +1,7 @@
+{
+  "tool": "qfex-lighter",
+  "version": "0.5.0",
+  "platform": "linux-x86_64",
+  "source_policy": "single-file executables; application source is embedded",
+  "artifacts": ["panda-node", "panda-arb"]
+}

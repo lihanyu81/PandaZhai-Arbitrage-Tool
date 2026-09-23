@@ -10,6 +10,7 @@
 | `vanta-lighter` | Vanta ↔ Lighter | `panda-vanta` | `/opt/pandazhai/vanta` | `/var/lib/pandazhai/vanta` |
 | `arcus-lighter` | Arcus ↔ Lighter | `panda-arcus` | `/opt/pandazhai/arcus` | `/var/lib/pandazhai/arcus` |
 | `decibel-lighter` | Decibel ↔ Lighter | `panda-decibel` | `/opt/pandazhai/decibel` | `/var/lib/pandazhai/decibel` |
+| `qfex-lighter` | QFEX ↔ Lighter | `panda-qfex` | `/opt/pandazhai/qfex` | `/var/lib/pandazhai/qfex` |
 
 每台服务器建议只安装一种节点。当前仅支持 Ubuntu/Debian Linux x86_64（amd64），使用 systemd 常驻运行。
 
@@ -111,6 +112,15 @@ Decibel ↔ Lighter：
 curl -fsSL https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/main/install.sh \
   | sudo bash -s -- decibel-lighter
 ```
+
+QFEX ↔ Lighter：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/main/install.sh \
+  | sudo bash -s -- qfex-lighter
+```
+
+QFEX 节点默认使用 DRY RUN。配置时填写 QFEX API Public Key、API Secret、Account ID，并按 QFEX 合约规则核对数量精度后再进行小额实盘验证。
 
 Decibel 注册链接：暂留空（目前暂无）。
 
