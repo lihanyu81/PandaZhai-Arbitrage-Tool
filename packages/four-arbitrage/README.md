@@ -1,6 +1,6 @@
 # 四平台套利管理节点（Linux x86_64）
 
-版本 **0.1.3**。Entropy、Lighter、Robinhood Lighter、QFEX 四平台工具现已接入 pandazhai.com 管理中心。
+版本 **0.1.4**。Entropy、Lighter、Robinhood Lighter、QFEX 四平台工具现已接入 pandazhai.com 管理中心。
 
 ## 一键安装或从独立版迁移
 
@@ -58,4 +58,4 @@ sudo rm -rf -- /var/backups/pandazhai-four
 
 单标的生成六组组合、十二个买卖方向；每次执行一组买卖两腿，不保证跨交易所原子成交。未确认订单持续查单、不自动重发，完整回报到齐后计算收益。未知订单期间显示待核对。已平仓收益按组合开平仓成交与手续费汇总，不包含资金费及人工交易。
 
-封包不含松散 Python 应用源码、账户配置或数据库；不能保证防止专业反编译。保留独立版 `install-local.sh`，需要独立部署时可使用。见 [0.1.3 版本说明](RELEASE-0.1.3.md)。
+封包不含松散 Python 应用源码、账户配置或数据库；不能保证防止专业反编译。保留独立版 `install-local.sh`，需要独立部署时可使用。见 [0.1.4 版本说明](RELEASE-0.1.4.md)。
