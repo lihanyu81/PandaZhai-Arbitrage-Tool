@@ -1,0 +1,15 @@
+{
+  "tool": "four-arbitrage",
+  "version": "0.1.0",
+  "platform": "linux-x86_64",
+  "format": "PyInstaller single-file executable",
+  "artifacts": [
+    "panda-four"
+  ],
+  "source_policy": "No loose Python application source or bytecode files; application bytecode is embedded in PYZ. This is not anti-decompilation protection.",
+  "loose_application_source": 0,
+  "runtime_private_files": 0,
+  "default_mode": "demo",
+  "default_port": 8007,
+  "manager_registration_included": false
+}

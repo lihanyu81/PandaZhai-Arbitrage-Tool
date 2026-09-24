@@ -1,0 +1,7 @@
+熊猫寨四平台套利核心（PopDEX / RBLighter / Vanta / Arcus）
+Copyright (c) 2026. All rights reserved.
+
+除 OPEN_SOURCE_LICENSE.md 明确列出的公开源文件外，
+发布包中的套利策略、执行、风控、适配器、
+界面及其编译产物均为专有软件。未经版权所有者书面许可，不得复制、
+修改、再发布、反编译或用于提供竞争性服务。
