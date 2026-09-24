@@ -9,7 +9,7 @@ info() { echo "[PandaZhai] $*"; }
 [[ $(uname -m) == x86_64 ]] || die "仅支持 x86_64/amd64，当前架构：$(uname -m)。"
 
 TOOL="${1:-}"
-[[ -n "$TOOL" ]] || die "缺少节点类型：entropy-lighter、popdex-lighter、rblighter-lighter、vanta-lighter、arcus-lighter、decibel-lighter 或 qfex-lighter。"
+[[ -n "$TOOL" ]] || die "缺少节点类型：entropy-lighter、popdex-lighter、rblighter-lighter、vanta-lighter、arcus-lighter、decibel-lighter 、qfex-lighter 或 four-arbitrage。"
 shift
 
 PORT=9100
@@ -33,6 +33,7 @@ case "$TOOL" in
   arcus-lighter) SHORT=arcus ;;
   decibel-lighter) SHORT=decibel ;;
   qfex-lighter) SHORT=qfex ;;
+  four-arbitrage) SHORT=four ;;
   *) die "不支持的节点类型：$TOOL" ;;
 esac
 
@@ -50,6 +51,20 @@ SERVICE="panda-$SHORT"
 PACKAGE_URL="$REPO_RAW/packages/$TOOL"
 TEMP_DIR=$(mktemp -d /tmp/pandazhai-install.XXXXXX)
 trap 'rm -rf -- "$TEMP_DIR"' EXIT
+
+if [[ "$TOOL" == four-arbitrage ]]; then
+  command -v ss >/dev/null || die "缺少 ss 命令，请安装 iproute2。"
+  [[ -z "$(ss -H -ltn "sport = :$PORT")" ]] || die "端口 $PORT 已占用，请选择 --port 9101 等其他端口；不会停止现有节点。"
+  info "下载四平台独立节点封包……"
+  for artifact in SHA256SUMS panda-four install-local.sh; do
+    curl --fail --location --retry 3 "$PACKAGE_URL/$artifact" --output "$TEMP_DIR/$artifact"
+  done
+  (cd "$TEMP_DIR" && sha256sum --check SHA256SUMS)
+  chmod +x "$TEMP_DIR/panda-four"
+  bash "$TEMP_DIR/install-local.sh" --port "$PORT"
+  info "四平台独立节点已安装，监听 127.0.0.1:$PORT；远程访问请使用 SSH 隧道。当前不支持管理中心注册。"
+  exit 0
+fi
 
 info "下载 $TOOL 节点封包……"
 curl --fail --location --retry 3 "$PACKAGE_URL/SHA256SUMS" --output "$TEMP_DIR/SHA256SUMS"

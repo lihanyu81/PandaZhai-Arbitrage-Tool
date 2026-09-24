@@ -2,6 +2,26 @@
 
 接入 Entropy、Lighter、Robinhood Lighter、QFEX。选择一个共同标的，生成六组组合，计算十二个买卖方向并统一核对仓位。
 
+## 一键安装（默认 9100）
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/main/install.sh | sudo bash -s -- four-arbitrage --port 9100
+```
+
+独立工具，监听 `127.0.0.1:9100`，不是管理中心注册节点。若端口被其他节点占用，改用 `--port 9101`；安装器不会停止其他节点。
+在自己的电脑执行 `ssh -N -L 9100:127.0.0.1:9100 ubuntu@服务器IP`，然后访问 `http://127.0.0.1:9100`。
+
+## 清除四腿节点
+
+先处理交易所仓位和挂单。以下命令不会平仓，会永久删除本节点配置、2FA 和交易记录。
+
+```bash
+sudo systemctl disable --now panda-four.service
+sudo rm -f -- /etc/systemd/system/panda-four.service
+sudo rm -rf -- /etc/systemd/system/panda-four.service.d /opt/pandazhai/four /var/lib/pandazhai/four
+sudo systemctl daemon-reload
+```
+
 ## 下载安装
 
 在服务器上执行以下命令，下载可执行文件与安装脚本并校验：

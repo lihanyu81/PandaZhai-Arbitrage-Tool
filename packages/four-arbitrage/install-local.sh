@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
 set -euo pipefail
 if [ "$(id -u)" != 0 ]; then echo '请使用 sudo 运行安装脚本'; exit 1; fi
+listen_port=8007
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --port) [[ $# -ge 2 ]] || exit 1; listen_port=$2; shift 2 ;;
+    *) echo "不支持的参数：$1" >&2; exit 1 ;;
+  esac
+done
+[[ "$listen_port" =~ ^[0-9]{1,5}$ ]] || { echo '无效端口'; exit 1; }
+listen_port=$((10#$listen_port))
+((listen_port >= 1 && listen_port <= 65535)) || { echo '无效端口'; exit 1; }
 artifact_dir=$(cd -- "$(dirname -- "$0")" && pwd)
 if [ ! -x "$artifact_dir/panda-four" ]; then echo '缺少同目录 panda-four 二进制'; exit 1; fi
 id panda-four >/dev/null 2>&1 || useradd --system --home-dir /var/lib/pandazhai/four --create-home --shell /usr/sbin/nologin panda-four
@@ -25,6 +35,12 @@ PrivateTmp=true
 [Install]
 WantedBy=multi-user.target
 UNIT
+install -d -m 755 /etc/systemd/system/panda-four.service.d
+cat > /etc/systemd/system/panda-four.service.d/port.conf <<PORT
+[Service]
+ExecStart=
+ExecStart=/opt/pandazhai/four/panda-four serve --host 127.0.0.1 --port $listen_port --data-dir /var/lib/pandazhai/four
+PORT
 systemctl daemon-reload
 systemctl enable --now panda-four
-printf '%s\n' '已启动，监听 127.0.0.1:8007。远程访问请使用 SSH 隧道或认证反向代理。' '查看工具 2FA：sudo -u panda-four /opt/pandazhai/four/panda-four auth --data-dir /var/lib/pandazhai/four'
+printf '%s\n' "已启动，监听 127.0.0.1:$listen_port。远程访问请使用 SSH 隧道或认证反向代理。" '查看工具 2FA：sudo -u panda-four /opt/pandazhai/four/panda-four auth --data-dir /var/lib/pandazhai/four'
