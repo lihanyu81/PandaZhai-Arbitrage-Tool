@@ -1,82 +1,61 @@
-# 四平台套利节点（Linux x86_64）
+# 四平台套利管理节点（Linux x86_64）
 
-接入 Entropy、Lighter、Robinhood Lighter、QFEX。选择一个共同标的，生成六组组合，计算十二个买卖方向并统一核对仓位。
+版本 **0.1.3**。Entropy、Lighter、Robinhood Lighter、QFEX 四平台工具现已接入 pandazhai.com 管理中心。
 
-## 一键安装（默认 9100）
+## 一键安装或从独立版迁移
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/main/install.sh | sudo bash -s -- four-arbitrage --port 9100
 ```
 
-独立工具，监听 `127.0.0.1:9100`，不是管理中心注册节点。若端口被其他节点占用，改用 `--port 9101`；安装器不会停止其他节点。
-在自己的电脑执行 `ssh -N -L 9100:127.0.0.1:9100 ubuntu@服务器IP`，然后访问 `http://127.0.0.1:9100`。
+安装时显示**节点注册 2FA 二维码和手动密钥**，请绑定到身份验证器。然后打开 https://pandazhai.com ，创建节点，填写服务器 IP、9100 端口和节点验证码。管理中心会自动识别“四平台套利”并打开工具界面，不需要 SSH 隧道或再输入工具登录验证码。保存交易配置仍需管理中心账户的 2FA。
 
-## 清除四腿节点
-
-先处理交易所仓位和挂单。以下命令不会平仓，会永久删除本节点配置、2FA 和交易记录。
+节点网关监听 `0.0.0.0:9100`；策略子进程仅监听 `127.0.0.1:18000`。安全组允许管理中心访问节点端口，不需要开放子端口。如果同机其他工具占用端口，可同时调整：
 
 ```bash
-sudo systemctl disable --now panda-four.service
-sudo rm -f -- /etc/systemd/system/panda-four.service
-sudo rm -rf -- /etc/systemd/system/panda-four.service.d /opt/pandazhai/four /var/lib/pandazhai/four
-sudo systemctl daemon-reload
+curl -fsSL https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/main/install.sh | sudo bash -s -- four-arbitrage --port 9101 --child-port 18001
 ```
 
-## 下载安装
+安装器只会停止/替换 `panda-four.service`，遇到其他服务占用端口会退出。从旧独立版迁移时，会先备份，再把配置、交易账本和旧工具 2FA 移到 `/var/lib/pandazhai/four/tool-data`；不需要清空重装。若发现两套冲突数据，会拒绝覆盖。备份位于 `/var/backups/pandazhai-four/`，应按敏感账户数据保管。
 
-在服务器上执行以下命令，下载可执行文件与安装脚本并校验：
+迁移期间服务会暂时停止；先暂停任务并核对仓位。升级或注册不会自动恢复套利，新装默认演示模式并暂停。注册后的节点保持原账户配置，但仍需核对持仓后自行恢复。
+
+重新查看**节点注册**二维码：
 
 ```bash
-mkdir -p ~/panda-four-install
-cd ~/panda-four-install
-curl -fL -o panda-four https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/main/packages/four-arbitrage/panda-four
-curl -fL -o install-local.sh https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/main/packages/four-arbitrage/install-local.sh
-curl -fL -o SHA256SUMS https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/main/packages/four-arbitrage/SHA256SUMS
-sha256sum -c SHA256SUMS
-chmod +x panda-four install-local.sh
-sudo ./install-local.sh
+sudo -u panda-four /opt/pandazhai/four/panda-node node --tool four-arbitrage --tool-executable /opt/pandazhai/four/panda-four --data-dir /var/lib/pandazhai/four --init-only --show-qr
 ```
 
-确认校验全部显示 `OK` 后再安装。脚本创建独立 `panda-four` 服务，程序位于 `/opt/pandazhai/four`，数据位于 `/var/lib/pandazhai/four`。默认只监听 `127.0.0.1:8007`。
-
-在自己的电脑建立 SSH 隧道，将服务器地址替换为实际地址：
-
-```bash
-ssh -L 8007:127.0.0.1:8007 ubuntu@服务器地址
-```
-
-然后打开浏览器 `http://127.0.0.1:8007`。在服务器本机查看并绑定工具 2FA：
-
-```bash
-sudo -u panda-four /opt/pandazhai/four/panda-four auth --data-dir /var/lib/pandazhai/four
-```
-
-不安装服务也可运行：`./panda-four serve --host 127.0.0.1 --port 8007`，默认数据目录为当前用户的 `~/.local/share/panda-four-arb`。
-
-## 使用与运行边界
-
-默认演示模式且暂停。先选标的生成六组策略，确认模拟流程；再配置四家账户、实际费率和限额，切换真实行情模拟。共同标的来自四家市场目录交集，不支持的平台不会用假行情代替。
-
-实盘需要明确开启实盘模式和确认开关。首次使用的标的应无旧持仓或挂单，也不要让其他节点或人工同时交易相同账户标的。本版本不支持导入已有仓位作为基线。
-
-两家交易所不能原子成交，一腿失败或部分成交会暂停新增、等待核验与处理。暂停新增后已有持仓的止盈和风险退出仍会运行。重启后需先对账再恢复。
-
-仓位按相同基础资产单位汇总。仅适用于相同标的、相同合约计量单位；净数量为零也需要逐平台核对账本。净 bps 估算包含预留手续费和滑点，不包含资金费，也不保证收益。
-
-当前为独立节点版，尚未包含管理中心注册组件，尚未完成四平台真实资金开平仓验收。详见 [版本说明](RELEASE-0.1.2.md)。
+这是节点身份验证器，与旧独立版工具 2FA、管理中心账户 2FA 分开。
 
 ## 停止服务
 
 ```bash
-sudo systemctl stop panda-four
+sudo systemctl stop panda-four.service
 ```
 
-停止服务不会平掉交易所仓位。账户密钥和 2FA 数据保存在独立数据目录，不随发布包分发。
+停止服务不会平掉交易所仓位。
 
-## 封包说明
+## 清除节点
 
-分发的是单文件可执行程序，不包含散装 Python 应用源码。普通解压无法直接得到 `.py` 源文件；封包不是不可逆加密，不能承诺防止专业反编译。前端资源会由浏览器加载。
+先处理交易所仓位和挂单。以下命令永久删除本节点程序、配置、2FA 和交易记录，不会自动平仓，也不删除迁移备份。
 
-当前版本 **0.1.2**：QFEX 回报兼容修复、逐腿独立保存与超时控制；未确认订单每 30 秒自动补查，补齐收益后仍需核对持仓再恢复，不自动重发订单。
+```bash
+sudo systemctl disable --now panda-four.service
+sudo rm -f -- /etc/systemd/system/panda-four.service
+sudo rm -rf -- /etc/systemd/system/panda-four.service.d
+sudo rm -rf -- /opt/pandazhai/four /var/lib/pandazhai/four
+sudo systemctl daemon-reload
+```
 
-0.1.2 补充退出收益保护：未知订单期间显示“待核对”，完整成交确认后再计算；已验证全部 12 个方向的手动/风险退出、部分成交多轮退出、延迟回报和重启后收益。
+如需连备份一起清除，确认不再需要恢复后执行：
+
+```bash
+sudo rm -rf -- /var/backups/pandazhai-four
+```
+
+## 交易与封包说明
+
+单标的生成六组组合、十二个买卖方向；每次执行一组买卖两腿，不保证跨交易所原子成交。未确认订单持续查单、不自动重发，完整回报到齐后计算收益。未知订单期间显示待核对。已平仓收益按组合开平仓成交与手续费汇总，不包含资金费及人工交易。
+
+封包不含松散 Python 应用源码、账户配置或数据库；不能保证防止专业反编译。保留独立版 `install-local.sh`，需要独立部署时可使用。见 [0.1.3 版本说明](RELEASE-0.1.3.md)。

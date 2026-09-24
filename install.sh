@@ -53,16 +53,13 @@ TEMP_DIR=$(mktemp -d /tmp/pandazhai-install.XXXXXX)
 trap 'rm -rf -- "$TEMP_DIR"' EXIT
 
 if [[ "$TOOL" == four-arbitrage ]]; then
-  command -v ss >/dev/null || die "缺少 ss 命令，请安装 iproute2。"
-  [[ -z "$(ss -H -ltn "sport = :$PORT")" ]] || die "端口 $PORT 已占用，请选择 --port 9101 等其他端口；不会停止现有节点。"
-  info "下载四平台独立节点封包……"
-  for artifact in SHA256SUMS panda-four install-local.sh; do
+  for command_name in ss python3 runuser; do command -v "$command_name" >/dev/null || die "缺少命令：$command_name"; done
+  info "下载四平台管理节点封包……"
+  for artifact in SHA256SUMS panda-four panda-node install-local.sh install-managed.sh; do
     curl --fail --location --retry 3 "$PACKAGE_URL/$artifact" --output "$TEMP_DIR/$artifact"
   done
   (cd "$TEMP_DIR" && sha256sum --check SHA256SUMS)
-  chmod +x "$TEMP_DIR/panda-four"
-  bash "$TEMP_DIR/install-local.sh" --port "$PORT"
-  info "四平台独立节点已安装，监听 127.0.0.1:$PORT；远程访问请使用 SSH 隧道。当前不支持管理中心注册。"
+  bash "$TEMP_DIR/install-managed.sh" --port "$PORT" --child-port "$CHILD_PORT"
   exit 0
 fi
 
