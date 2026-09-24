@@ -1,6 +1,6 @@
 {
   "tool": "four-arbitrage",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "platform": "linux-x86_64",
   "format": "PyInstaller single-file executable",
   "artifacts": [
@@ -11,5 +11,11 @@
   "runtime_private_files": 0,
   "default_mode": "demo",
   "default_port": 8007,
-  "manager_registration_included": false
+  "manager_registration_included": false,
+  "verification": {
+    "automated_tests": 39,
+    "packaged_doctor": "passed",
+    "demo_browser": "passed",
+    "live_orders_sent": 0
+  }
 }
