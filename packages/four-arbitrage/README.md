@@ -1,6 +1,10 @@
 # 价差高频套利管理节点（Linux x86_64）
 
-版本 **0.5.3**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus 的混合工具现已接入 pandazhai.com 管理中心。
+版本 **0.5.4**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus 的混合工具现已接入 pandazhai.com 管理中心。
+
+## 0.5.4 自动查单与对账
+
+短暂成交回报延迟会自动查单并完成仓位核验，成功后继续调度；手动暂停、异常超时及其他风控停机保持保护。详见 [更新说明](RELEASE-0.5.4.md)。
 
 ## 0.5.3 双方向门槛
 

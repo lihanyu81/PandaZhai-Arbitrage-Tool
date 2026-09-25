@@ -1,6 +1,6 @@
 {
   "tool": "four-arbitrage",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "platform": "linux-x86_64",
   "format": "PyInstaller single-file executable",
   "artifacts": [
@@ -14,7 +14,7 @@
   "default_port": 9100,
   "manager_registration_included": true,
   "verification": {
-    "automated_tests": 382,
+    "automated_tests": 386,
     "packaged_doctor": "passed",
     "demo_browser": "passed",
     "live_orders_sent": 0,
@@ -45,7 +45,8 @@
     "telegram": "passed with mocked HTTP: disabled default, cursor persistence, retry, token redaction, authenticated API; no messages sent",
     "matrix_route_browser": "passed (0.5.1): selected direction, independent chart, simplified defaults, turnover column, Telegram form",
     "current_quote_error_and_execution_signal": "passed (0.5.2): transient subscription errors clear after recovery, non-market errors retained, displayed primary value uses execution signal",
-    "direction_threshold_display": "passed (0.5.3): 163 targeted tests, both threshold conversions equal execution boundaries, manager proxy browser"
+    "direction_threshold_display": "passed (0.5.3): 163 targeted tests, both threshold conversions equal execution boundaries, manager proxy browser",
+    "auto_delayed_fill_reconciliation": "passed (0.5.4): lookup original order, retry without resubmission, preserve user pause, hold strategy lock through reconciliation, pause timeout and imbalanced fills"
   },
   "child_port": 18000,
   "supported_venues": [
