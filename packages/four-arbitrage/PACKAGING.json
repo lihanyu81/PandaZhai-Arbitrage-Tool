@@ -1,6 +1,6 @@
 {
   "tool": "four-arbitrage",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "platform": "linux-x86_64",
   "format": "PyInstaller single-file executable",
   "artifacts": [
@@ -44,7 +44,8 @@
     "same_direction_mean_and_turnover": "passed: event deduplication, current sample exclusion, actual fill accounting, persistence",
     "telegram": "passed with mocked HTTP: disabled default, cursor persistence, retry, token redaction, authenticated API; no messages sent",
     "matrix_route_browser": "passed (0.5.1): selected direction, independent chart, simplified defaults, turnover column, Telegram form",
-    "current_quote_error_and_execution_signal": "passed (0.5.2): transient subscription errors clear after recovery, non-market errors retained, displayed primary value uses execution signal"
+    "current_quote_error_and_execution_signal": "passed (0.5.2): transient subscription errors clear after recovery, non-market errors retained, displayed primary value uses execution signal",
+    "direction_threshold_display": "passed (0.5.3): 163 targeted tests, both threshold conversions equal execution boundaries, manager proxy browser"
   },
   "child_port": 18000,
   "supported_venues": [

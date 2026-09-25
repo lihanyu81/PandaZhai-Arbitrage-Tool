@@ -1,6 +1,10 @@
 # 价差高频套利管理节点（Linux x86_64）
 
-版本 **0.5.2**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus 的混合工具现已接入 pandazhai.com 管理中心。
+版本 **0.5.3**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus 的混合工具现已接入 pandazhai.com 管理中心。
+
+## 0.5.3 双方向门槛
+
+增加买 A / 卖 B、买 B / 卖 A 两个方向的下单门槛（bps），与实际策略使用相同换算基准。执行逻辑不变。详见 [更新说明](RELEASE-0.5.3.md)。
 
 ## 0.5.2 下单信号与行情提示
 
