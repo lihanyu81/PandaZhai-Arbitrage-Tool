@@ -1,6 +1,6 @@
 # 价差高频套利管理节点（Linux x86_64）
 
-版本 **0.4.5**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus 的混合工具现已接入 pandazhai.com 管理中心。
+版本 **0.4.6**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus 的混合工具现已接入 pandazhai.com 管理中心。
 
 ## 一键安装或从独立版迁移
 
@@ -77,3 +77,7 @@ sudo rm -rf -- /var/backups/pandazhai-four
 ## 账户接入（0.4.5）
 
 本节点的八个平台均不执行熊猫寨白名单或邀请资格校验。接入按钮只核验账户配置、API 密钥及交易权限；启动与下单前复核使用相同规则。仍需填写并保存交易所 API 配置。
+
+## 保存后校验（0.4.6）
+
+填写或修改账户信息后，先点击页面底部“保存平台配置”并完成 2FA，再点击“校验账户与 API 接入”。未保存输入会明确提示，不再请求校验旧配置；缺少已保存字段时，接口列出字段名称。

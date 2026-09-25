@@ -1,6 +1,6 @@
 {
   "tool": "four-arbitrage",
-  "version": "0.4.5",
+  "version": "0.4.6",
   "platform": "linux-x86_64",
   "format": "PyInstaller single-file executable",
   "artifacts": [
@@ -14,7 +14,7 @@
   "default_port": 9100,
   "manager_registration_included": true,
   "verification": {
-    "automated_tests": 365,
+    "automated_tests": 367,
     "packaged_doctor": "passed",
     "demo_browser": "passed",
     "live_orders_sent": 0,
@@ -36,7 +36,9 @@
     "removed_notional_limits": "passed: legacy limits ignored, dispatch above old limits, insufficient balance still blocked",
     "save_without_notional_fields_browser": "passed (0.4.4)",
     "no_referral_gate": "passed for all eight venues: API checks retained, referral/whitelist calls absent",
-    "api_only_access_browser": "passed (0.4.5): button route, no invitation status, configuration save"
+    "api_only_access_browser": "passed (0.4.5): button route, no invitation status, configuration save",
+    "missing_saved_credentials": "passed; field names only, API Key Index 0 supported",
+    "unsaved_credentials_browser": "passed (0.4.6): draft input blocks stale verification, configuration save works"
   },
   "child_port": 18000,
   "supported_venues": [
