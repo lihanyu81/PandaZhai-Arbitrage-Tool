@@ -1,6 +1,10 @@
 # 价差高频套利管理节点（Linux x86_64）
 
-版本 **0.5.4**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus 的混合工具现已接入 pandazhai.com 管理中心。
+版本 **0.5.5**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus 的混合工具现已接入 pandazhai.com 管理中心。
+
+## 0.5.5 账户权益变化
+
+总览收益改为当前账户权益合计减基准权益合计，基准持久保存，可手动重设。含充提及同账户其他交易影响。详见 [更新说明](RELEASE-0.5.5.md)。
 
 ## 0.5.4 自动查单与对账
 
