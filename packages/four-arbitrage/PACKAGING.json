@@ -1,6 +1,6 @@
 {
   "tool": "four-arbitrage",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "platform": "linux-x86_64",
   "format": "PyInstaller single-file executable",
   "artifacts": [
@@ -25,7 +25,9 @@
     "monitor_clock_and_fee_independence": "passed",
     "native_adapter_tests": 116,
     "manager_registration_whitelist_tests": 4,
-    "config_save_without_fee_input": "passed"
+    "config_save_without_fee_input": "passed",
+    "field_error_tests": "passed",
+    "manager_delimiter_rewrite": "passed"
   },
   "child_port": 18000,
   "supported_venues": [
