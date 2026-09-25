@@ -1,6 +1,10 @@
 # 价差高频套利管理节点（Linux x86_64）
 
-版本 **0.5.1**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus 的混合工具现已接入 pandazhai.com 管理中心。
+版本 **0.5.2**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus 的混合工具现已接入 pandazhai.com 管理中心。
+
+## 0.5.2 下单信号与行情提示
+
+醒目值恢复为原双腿策略的实际下单信号，同方向均值偏离不再展示。行情恢复后及时清除旧订阅提示；真实行情健康检查保留。详见 [更新说明](RELEASE-0.5.2.md)。
 
 ## 0.5.1 界面与推送
 
