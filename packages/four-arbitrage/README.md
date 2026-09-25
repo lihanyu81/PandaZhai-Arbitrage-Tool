@@ -1,6 +1,6 @@
 # 混合套利管理节点（Linux x86_64）
 
-版本 **0.3.0**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus 的混合工具现已接入 pandazhai.com 管理中心。
+版本 **0.3.1**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus 的混合工具现已接入 pandazhai.com 管理中心。
 
 ## 一键安装或从独立版迁移
 
@@ -59,3 +59,5 @@ sudo rm -rf -- /var/backups/pandazhai-four
 单标的按启用的 2–8 家平台生成 1–28 组组合、2–56 个买卖方向；每次执行一组买卖两腿，不保证跨交易所原子成交。未确认订单持续查单、不自动重发，完整回报到齐后计算收益。未知订单期间显示待核对。已平仓收益按组合开平仓成交与手续费汇总，不包含资金费及人工交易。
 
 封包不含松散 Python 应用源码、账户配置或数据库；不能保证防止专业反编译。保留独立版 `install-local.sh`，需要独立部署时可使用。新建组合默认滑动窗口策略，各组合目标独立设置；旧组合保留原模式。价差展示不扣手续费，延迟行情单独标注。新增平台的凭证要求和验证范围见 [0.3.0 版本说明](RELEASE-0.3.0.md)。
+
+平台配置无需填写每腿手续费，详见 [0.3.1 说明](RELEASE-0.3.1.md)。
