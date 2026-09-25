@@ -1,6 +1,6 @@
 # 混合套利管理节点（Linux x86_64）
 
-版本 **0.3.2**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus 的混合工具现已接入 pandazhai.com 管理中心。
+版本 **0.4.0**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus 的混合工具现已接入 pandazhai.com 管理中心。
 
 ## 一键安装或从独立版迁移
 
@@ -63,3 +63,5 @@ sudo rm -rf -- /var/backups/pandazhai-four
 平台配置无需填写每腿手续费，详见 [0.3.1 说明](RELEASE-0.3.1.md)。
 
 参数报错现会指出具体字段，见 [0.3.2 说明](RELEASE-0.3.2.md)。
+
+每组支持独立 STEP 上限和每步数量，反向信号先减仓到 0。旧组合无持仓时可在“编辑”中设置最大正负步数并保存切换，见 [0.4.0 说明](RELEASE-0.4.0.md)。

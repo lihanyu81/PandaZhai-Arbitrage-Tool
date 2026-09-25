@@ -1,6 +1,6 @@
 {
   "tool": "four-arbitrage",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "platform": "linux-x86_64",
   "format": "PyInstaller single-file executable",
   "artifacts": [
@@ -14,7 +14,7 @@
   "default_port": 9100,
   "manager_registration_included": true,
   "verification": {
-    "automated_tests": 325,
+    "automated_tests": 334,
     "packaged_doctor": "passed",
     "demo_browser": "passed",
     "live_orders_sent": 0,
@@ -27,7 +27,8 @@
     "manager_registration_whitelist_tests": 4,
     "config_save_without_fee_input": "passed",
     "field_error_tests": "passed",
-    "manager_delimiter_rewrite": "passed"
+    "manager_delimiter_rewrite": "passed",
+    "step_limits_reversal_recovery": "passed"
   },
   "child_port": 18000,
   "supported_venues": [
