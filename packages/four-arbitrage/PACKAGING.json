@@ -1,6 +1,6 @@
 {
   "tool": "four-arbitrage",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "platform": "linux-x86_64",
   "format": "PyInstaller single-file executable",
   "artifacts": [
@@ -31,7 +31,9 @@
     "step_limits_reversal_recovery": "passed",
     "branding_logo_proxy_browser": "passed (0.4.1, live-source manager + packaged node/tool)",
     "market_health_websocket_tests": "passed (quiet books, heartbeat failure, invalid book, reconnect snapshot)",
-    "market_health_proxy_browser": "passed (0.4.2, healthy quiet book and failed heartbeat display)"
+    "market_health_proxy_browser": "passed (0.4.2, healthy quiet book and failed heartbeat display)",
+    "previous_functional_test_version": "0.4.2",
+    "step_zero_display_browser": "passed (0.4.3: 0E+3, signed zero, positive/negative/partial/unknown steps)"
   },
   "child_port": 18000,
   "supported_venues": [
