@@ -1,6 +1,10 @@
 # 价差高频套利管理节点（Linux x86_64）
 
-版本 **0.4.6**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus 的混合工具现已接入 pandazhai.com 管理中心。
+版本 **0.5.0**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus 的混合工具现已接入 pandazhai.com 管理中心。
+
+## 0.5.0 交易规则
+
+交易所配置中分别设置最大正负步数，按所有组合合计净仓位计算。达到上限只减不增。策略之间严格串行，前一笔订单与实际仓位对账完成后，才执行下一策略。详见 [更新说明](RELEASE-0.5.0.md)。
 
 ## 一键安装或从独立版迁移
 
@@ -18,7 +22,7 @@ curl -fsSL https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/
 
 安装器只会停止/替换 `panda-four.service`，遇到其他服务占用端口会退出。从旧独立版迁移时，会先备份，再把配置、交易账本和旧工具 2FA 移到 `/var/lib/pandazhai/four/tool-data`；不需要清空重装。若发现两套冲突数据，会拒绝覆盖。备份位于 `/var/backups/pandazhai-four/`，应按敏感账户数据保管。
 
-迁移期间服务会暂时停止；先暂停任务并核对仓位。升级或注册不会自动恢复套利，新装默认演示模式并暂停。注册后的节点保持原账户配置，但仍需核对持仓后自行恢复。
+迁移期间服务会暂时停止；先暂停任务并核对仓位。升级或注册不会自动恢复套利，运行模式固定实盘，安装、升级及重启后保持暂停，由用户点击“启动交易”开启调度。注册后的节点保持原账户配置，但仍需核对持仓后自行恢复。
 
 重新查看**节点注册**二维码：
 

@@ -1,6 +1,6 @@
 {
   "tool": "four-arbitrage",
-  "version": "0.4.6",
+  "version": "0.5.0",
   "platform": "linux-x86_64",
   "format": "PyInstaller single-file executable",
   "artifacts": [
@@ -10,11 +10,11 @@
   "source_policy": "No loose Python application source or bytecode files; application bytecode is embedded in PYZ. This is not anti-decompilation protection.",
   "loose_application_source": 0,
   "runtime_private_files": 0,
-  "default_mode": "demo",
+  "default_mode": "live",
   "default_port": 9100,
   "manager_registration_included": true,
   "verification": {
-    "automated_tests": 367,
+    "automated_tests": 376,
     "packaged_doctor": "passed",
     "demo_browser": "passed",
     "live_orders_sent": 0,
@@ -38,7 +38,9 @@
     "no_referral_gate": "passed for all eight venues: API checks retained, referral/whitelist calls absent",
     "api_only_access_browser": "passed (0.4.5): button route, no invitation status, configuration save",
     "missing_saved_credentials": "passed; field names only, API Key Index 0 supported",
-    "unsaved_credentials_browser": "passed (0.4.6): draft input blocks stale verification, configuration save works"
+    "unsaved_credentials_browser": "passed (0.4.6): draft input blocks stale verification, configuration save works",
+    "venue_step_and_serial_reconciliation": "passed (0.5.0): aggregate caps, reduce-only, pending order/position barrier, restart persistence",
+    "live_only_and_venue_steps_browser": "passed (0.5.0): mode/pair limit fields removed, venue limit saved as 20, unified quantity, manager proxy"
   },
   "child_port": 18000,
   "supported_venues": [
@@ -51,5 +53,6 @@
     "popdex",
     "arcus"
   ],
-  "display_name": "价差高频套利"
+  "display_name": "价差高频套利",
+  "default_paused": true
 }
