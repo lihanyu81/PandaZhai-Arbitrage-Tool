@@ -1,6 +1,6 @@
 {
   "tool": "four-arbitrage",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "platform": "linux-x86_64",
   "format": "PyInstaller single-file executable",
   "artifacts": [
@@ -28,7 +28,9 @@
     "config_save_without_fee_input": "passed",
     "field_error_tests": "passed",
     "manager_delimiter_rewrite": "passed",
-    "step_limits_reversal_recovery": "passed"
+    "step_limits_reversal_recovery": "passed",
+    "previous_functional_test_version": "0.4.0",
+    "branding_logo_proxy_browser": "passed (0.4.1, live-source manager + packaged node/tool)"
   },
   "child_port": 18000,
   "supported_venues": [
@@ -40,5 +42,6 @@
     "vanta",
     "popdex",
     "arcus"
-  ]
+  ],
+  "display_name": "价差高频套利"
 }

@@ -1,6 +1,6 @@
-# 混合套利管理节点（Linux x86_64）
+# 价差高频套利管理节点（Linux x86_64）
 
-版本 **0.4.0**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus 的混合工具现已接入 pandazhai.com 管理中心。
+版本 **0.4.1**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus 的混合工具现已接入 pandazhai.com 管理中心。
 
 ## 一键安装或从独立版迁移
 
@@ -8,7 +8,7 @@
 curl -fsSL https://raw.githubusercontent.com/lihanyu81/PandaZhai-Arbitrage-Tool/main/install.sh | sudo bash -s -- four-arbitrage --port 9100
 ```
 
-安装时显示**节点注册 2FA 二维码和手动密钥**，请绑定到身份验证器。然后打开 https://pandazhai.com ，创建节点，填写服务器 IP、9100 端口和节点验证码。管理中心会自动识别“混合套利”并打开工具界面，不需要 SSH 隧道或再输入工具登录验证码。保存交易配置仍需管理中心账户的 2FA。
+安装时显示**节点注册 2FA 二维码和手动密钥**，请绑定到身份验证器。然后打开 https://pandazhai.com ，创建节点，填写服务器 IP、9100 端口和节点验证码。管理中心会自动识别“价差高频套利”并打开工具界面，不需要 SSH 隧道或再输入工具登录验证码。保存交易配置仍需管理中心账户的 2FA。
 
 节点网关监听 `0.0.0.0:9100`；策略子进程仅监听 `127.0.0.1:18000`。安全组允许管理中心访问节点端口，不需要开放子端口。如果同机其他工具占用端口，可同时调整：
 
