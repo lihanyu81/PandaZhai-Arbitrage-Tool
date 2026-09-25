@@ -1,6 +1,6 @@
 {
   "tool": "four-arbitrage",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "platform": "linux-x86_64",
   "format": "PyInstaller single-file executable",
   "artifacts": [
@@ -14,7 +14,7 @@
   "default_port": 9100,
   "manager_registration_included": true,
   "verification": {
-    "automated_tests": 349,
+    "automated_tests": 350,
     "packaged_doctor": "passed",
     "demo_browser": "passed",
     "live_orders_sent": 0,
@@ -32,8 +32,9 @@
     "branding_logo_proxy_browser": "passed (0.4.1, live-source manager + packaged node/tool)",
     "market_health_websocket_tests": "passed (quiet books, heartbeat failure, invalid book, reconnect snapshot)",
     "market_health_proxy_browser": "passed (0.4.2, healthy quiet book and failed heartbeat display)",
-    "previous_functional_test_version": "0.4.2",
-    "step_zero_display_browser": "passed (0.4.3: 0E+3, signed zero, positive/negative/partial/unknown steps)"
+    "step_zero_display_browser": "passed (0.4.3: 0E+3, signed zero, positive/negative/partial/unknown steps)",
+    "removed_notional_limits": "passed: legacy limits ignored, dispatch above old limits, insufficient balance still blocked",
+    "save_without_notional_fields_browser": "passed (0.4.4)"
   },
   "child_port": 18000,
   "supported_venues": [
