@@ -1,6 +1,6 @@
 {
   "tool": "four-arbitrage",
-  "version": "0.5.12",
+  "version": "0.5.13",
   "platform": "linux-x86_64",
   "format": "PyInstaller single-file executable",
   "artifacts": [
@@ -54,7 +54,8 @@
     "venue_risk_threshold": "passed (0.5.9): independent persisted thresholds, live position editing, invalid value checks, stale/flat display, legacy USD stop disabled, proxy browser save",
     "arcus_risk_bridge": "passed (0.5.10): 16 targeted tests, positive/negative/missing margin buffer, live read-only, proxy browser",
     "risk_data_clocks": "passed (0.5.11): 20s boundary, independent account/liquidation/mark timestamps, waiting episode deduplication, live read-only ages, proxy browser",
-    "arcus_key_rotation": "passed (0.5.12): held-position key update, immutable account scope, failed verification preserves old config, registration/expiry/status/subaccount checks, proxy browser"
+    "arcus_key_rotation": "passed (0.5.12): held-position key update, immutable account scope, failed verification preserves old config, registration/expiry/status/subaccount checks, proxy browser",
+    "arcus_key_only_form": "passed (0.5.13): 13 targeted tests, semantic comparison, field-only errors, proxy browser verifies minimal credential-only request"
   },
   "child_port": 18000,
   "supported_venues": [
