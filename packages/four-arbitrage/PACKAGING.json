@@ -1,6 +1,6 @@
 {
   "tool": "four-arbitrage",
-  "version": "0.5.16",
+  "version": "0.5.17",
   "platform": "linux-x86_64",
   "format": "PyInstaller single-file executable",
   "artifacts": [
@@ -14,7 +14,7 @@
   "default_port": 9100,
   "manager_registration_included": true,
   "verification": {
-    "automated_tests": 451,
+    "automated_tests": 452,
     "packaged_doctor": "passed",
     "demo_browser": "passed",
     "live_orders_sent": 0,
@@ -58,7 +58,8 @@
     "arcus_key_only_form": "passed (0.5.13): 13 targeted tests, semantic comparison, field-only errors, proxy browser verifies minimal credential-only request",
     "config_save_without_state_gate": "passed (0.5.14): running and held-position saves, wait for operation lock, preserve ledger, pause and reconcile after apply, proxy browser",
     "arcus_precise_key_errors": "passed (0.5.15): 14 targeted tests, detailed scope mismatch, redact saved and unsaved credentials, proxy browser",
-    "arcus_manual_fill_picker": "passed: 25 targeted tests; managed browser candidate selection, preview and confirmation"
+    "arcus_manual_fill_picker": "passed: 25 targeted tests; managed browser candidate selection, preview and confirmation",
+    "top_level_depth_gate_removed": "passed: small top-of-book size does not block mocked open/close; slippage retained; managed browser smoke"
   },
   "child_port": 18000,
   "supported_venues": [
