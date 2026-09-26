@@ -1,6 +1,10 @@
 # 价差高频套利管理节点（Linux x86_64）
 
-版本 **0.5.8**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus 的混合工具现已接入 pandazhai.com 管理中心。
+版本 **0.5.9**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus 的混合工具现已接入 pandazhai.com 管理中心。
+
+## 0.5.9 平台仓位风控下限
+
+实际净仓位面板显示并允许调整各平台风险缓冲下限，移除周期固定 USD 止损。详见 [更新说明](RELEASE-0.5.9.md)。
 
 ## 0.5.8 Arcus 手动补单恢复
 
