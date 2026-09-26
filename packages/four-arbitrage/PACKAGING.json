@@ -1,6 +1,6 @@
 {
   "tool": "four-arbitrage",
-  "version": "0.5.19",
+  "version": "0.5.20",
   "platform": "linux-x86_64",
   "format": "PyInstaller single-file executable",
   "artifacts": [
@@ -14,7 +14,7 @@
   "default_port": 9100,
   "manager_registration_included": true,
   "verification": {
-    "automated_tests": 452,
+    "automated_tests": 455,
     "packaged_doctor": "passed",
     "demo_browser": "passed",
     "live_orders_sent": 0,
@@ -61,7 +61,8 @@
     "arcus_manual_fill_picker": "passed: 25 targeted tests; managed browser candidate selection, preview and confirmation",
     "top_level_depth_gate_removed": "passed: small top-of-book size does not block mocked open/close; slippage retained; managed browser smoke",
     "referral_and_positions_ui": "passed: 3 API tests; managed browser seven cards, hidden Decibel, three-column cycles, manual fill picker",
-    "full_notional_balance_gate_removed": "passed: 452 tests, mocked low-balance open/shared-net close, reduce-only, managed browser"
+    "full_notional_balance_gate_removed": "passed: 452 tests, mocked low-balance open/shared-net close, reduce-only, managed browser",
+    "cycle_pagination_and_pnl_details": "passed: 455 tests; managed browser paging, page size, close time, profit breakdown"
   },
   "child_port": 18000,
   "supported_venues": [
