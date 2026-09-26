@@ -1,6 +1,10 @@
 # 价差高频套利管理节点（Linux x86_64）
 
-版本 **0.5.10**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus 的混合工具现已接入 pandazhai.com 管理中心。
+版本 **0.5.11**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus 的混合工具现已接入 pandazhai.com 管理中心。
+
+## 0.5.11 风险数据新鲜度与日志
+
+标记价有效期 20 秒、后台风险复查约 30 秒，Lighter 独立跟踪账户/强平价/标记价时钟，等待日志记录原因和年龄并合并连续等待。详见 [更新说明](RELEASE-0.5.11.md)。
 
 ## 0.5.10 Arcus 保证金缓冲显示
 
