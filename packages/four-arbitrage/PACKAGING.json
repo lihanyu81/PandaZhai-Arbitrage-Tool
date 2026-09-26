@@ -1,6 +1,6 @@
 {
   "tool": "four-arbitrage",
-  "version": "0.5.23",
+  "version": "0.5.24",
   "platform": "linux-x86_64",
   "format": "PyInstaller single-file executable",
   "artifacts": [
@@ -14,7 +14,7 @@
   "default_port": 9100,
   "manager_registration_included": true,
   "verification": {
-    "automated_tests": 457,
+    "automated_tests": 472,
     "packaged_doctor": "passed",
     "demo_browser": "passed",
     "live_orders_sent": 0,
@@ -64,7 +64,9 @@
     "full_notional_balance_gate_removed": "passed: 452 tests, mocked low-balance open/shared-net close, reduce-only, managed browser",
     "cycle_pagination_and_pnl_details": "passed: 455 tests; managed browser paging, page size, close time, profit breakdown",
     "venue_default_fees": "passed: 457 tests; default and explicit fee configuration, PnL breakdown, managed browser",
-    "workbench_ui": "passed: offline responsive UI and frozen managed browser; no live exchange orders"
+    "workbench_ui": "passed: offline responsive UI and frozen managed browser; no live exchange orders",
+    "equity_refresh": "passed: display freshness boundary, restart cache, context invalidation, serialized reads, execution-lock independence, coalesced diagnostics",
+    "localization_resources": "passed: nine language choices, iframe preference sync, draft preservation, CPU/memory/disk rendering; partial long-copy English fallback"
   },
   "child_port": 18000,
   "supported_venues": [
