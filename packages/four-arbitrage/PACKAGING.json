@@ -1,6 +1,6 @@
 {
   "tool": "four-arbitrage",
-  "version": "0.5.17",
+  "version": "0.5.18",
   "platform": "linux-x86_64",
   "format": "PyInstaller single-file executable",
   "artifacts": [
@@ -59,7 +59,8 @@
     "config_save_without_state_gate": "passed (0.5.14): running and held-position saves, wait for operation lock, preserve ledger, pause and reconcile after apply, proxy browser",
     "arcus_precise_key_errors": "passed (0.5.15): 14 targeted tests, detailed scope mismatch, redact saved and unsaved credentials, proxy browser",
     "arcus_manual_fill_picker": "passed: 25 targeted tests; managed browser candidate selection, preview and confirmation",
-    "top_level_depth_gate_removed": "passed: small top-of-book size does not block mocked open/close; slippage retained; managed browser smoke"
+    "top_level_depth_gate_removed": "passed: small top-of-book size does not block mocked open/close; slippage retained; managed browser smoke",
+    "referral_and_positions_ui": "passed: 3 API tests; managed browser seven cards, hidden Decibel, three-column cycles, manual fill picker"
   },
   "child_port": 18000,
   "supported_venues": [
