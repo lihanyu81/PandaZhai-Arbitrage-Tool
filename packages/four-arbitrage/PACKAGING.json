@@ -1,6 +1,6 @@
 {
   "tool": "four-arbitrage",
-  "version": "0.5.21",
+  "version": "0.5.22",
   "platform": "linux-x86_64",
   "format": "PyInstaller single-file executable",
   "artifacts": [
@@ -63,7 +63,8 @@
     "referral_and_positions_ui": "passed: 3 API tests; managed browser seven cards, hidden Decibel, three-column cycles, manual fill picker",
     "full_notional_balance_gate_removed": "passed: 452 tests, mocked low-balance open/shared-net close, reduce-only, managed browser",
     "cycle_pagination_and_pnl_details": "passed: 455 tests; managed browser paging, page size, close time, profit breakdown",
-    "venue_default_fees": "passed: 457 tests; default and explicit fee configuration, PnL breakdown, managed browser"
+    "venue_default_fees": "passed: 457 tests; default and explicit fee configuration, PnL breakdown, managed browser",
+    "workbench_ui": "passed: offline responsive UI and frozen managed browser; no live exchange orders"
   },
   "child_port": 18000,
   "supported_venues": [
