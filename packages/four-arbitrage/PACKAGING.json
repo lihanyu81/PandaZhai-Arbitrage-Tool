@@ -1,6 +1,6 @@
 {
   "tool": "four-arbitrage",
-  "version": "0.5.7",
+  "version": "0.5.8",
   "platform": "linux-x86_64",
   "format": "PyInstaller single-file executable",
   "artifacts": [
@@ -14,7 +14,7 @@
   "default_port": 9100,
   "manager_registration_included": true,
   "verification": {
-    "automated_tests": 393,
+    "automated_tests": 407,
     "packaged_doctor": "passed",
     "demo_browser": "passed",
     "live_orders_sent": 0,
@@ -49,7 +49,8 @@
     "auto_delayed_fill_reconciliation": "passed (0.5.4): lookup original order, retry without resubmission, preserve user pause, hold strategy lock through reconciliation, pause timeout and imbalanced fills",
     "equity_change": "passed (0.5.5): saved baseline, fresh complete snapshots, no extra estimated costs, changed account rebase, manager proxy page",
     "pair_bid_ask_display": "passed (0.5.6): manager proxy browser, both venue bid/ask mapping, thresholds hidden",
-    "data_wait_recovery": "passed (0.5.7): transient data blocks entries, automatic recovery, manual pause retained, mismatch pause, real risk exit"
+    "data_wait_recovery": "passed (0.5.7): transient data blocks entries, automatic recovery, manual pause retained, mismatch pause, real risk exit",
+    "arcus_manual_recovery": "passed (0.5.8): preview/recheck/confirm, original order checks, positions/open orders, duplicate protection, audit, auth and CSRF, proxy browser; HTTP rejection reason preserved"
   },
   "child_port": 18000,
   "supported_venues": [

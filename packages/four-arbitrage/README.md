@@ -1,6 +1,10 @@
 # 价差高频套利管理节点（Linux x86_64）
 
-版本 **0.5.7**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus 的混合工具现已接入 pandazhai.com 管理中心。
+版本 **0.5.8**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus 的混合工具现已接入 pandazhai.com 管理中心。
+
+## 0.5.8 Arcus 手动补单恢复
+
+需要处理的 Arcus 组合可预览并确认关联完整手动补单，重新对账后手动恢复；记录原始拒单原因。详见 [更新说明](RELEASE-0.5.8.md)。
 
 ## 0.5.7 数据等待自动恢复
 
