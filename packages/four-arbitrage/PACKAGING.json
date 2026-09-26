@@ -1,6 +1,6 @@
 {
   "tool": "four-arbitrage",
-  "version": "0.5.11",
+  "version": "0.5.12",
   "platform": "linux-x86_64",
   "format": "PyInstaller single-file executable",
   "artifacts": [
@@ -14,7 +14,7 @@
   "default_port": 9100,
   "manager_registration_included": true,
   "verification": {
-    "automated_tests": 426,
+    "automated_tests": 437,
     "packaged_doctor": "passed",
     "demo_browser": "passed",
     "live_orders_sent": 0,
@@ -53,7 +53,8 @@
     "arcus_manual_recovery": "passed (0.5.8): preview/recheck/confirm, original order checks, positions/open orders, duplicate protection, audit, auth and CSRF, proxy browser; HTTP rejection reason preserved",
     "venue_risk_threshold": "passed (0.5.9): independent persisted thresholds, live position editing, invalid value checks, stale/flat display, legacy USD stop disabled, proxy browser save",
     "arcus_risk_bridge": "passed (0.5.10): 16 targeted tests, positive/negative/missing margin buffer, live read-only, proxy browser",
-    "risk_data_clocks": "passed (0.5.11): 20s boundary, independent account/liquidation/mark timestamps, waiting episode deduplication, live read-only ages, proxy browser"
+    "risk_data_clocks": "passed (0.5.11): 20s boundary, independent account/liquidation/mark timestamps, waiting episode deduplication, live read-only ages, proxy browser",
+    "arcus_key_rotation": "passed (0.5.12): held-position key update, immutable account scope, failed verification preserves old config, registration/expiry/status/subaccount checks, proxy browser"
   },
   "child_port": 18000,
   "supported_venues": [
