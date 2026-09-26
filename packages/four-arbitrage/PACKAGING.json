@@ -1,6 +1,6 @@
 {
   "tool": "four-arbitrage",
-  "version": "0.5.22",
+  "version": "0.5.23",
   "platform": "linux-x86_64",
   "format": "PyInstaller single-file executable",
   "artifacts": [
