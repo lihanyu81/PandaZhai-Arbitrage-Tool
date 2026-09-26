@@ -1,6 +1,6 @@
 {
   "tool": "four-arbitrage",
-  "version": "0.5.14",
+  "version": "0.5.15",
   "platform": "linux-x86_64",
   "format": "PyInstaller single-file executable",
   "artifacts": [
@@ -56,7 +56,8 @@
     "risk_data_clocks": "passed (0.5.11): 20s boundary, independent account/liquidation/mark timestamps, waiting episode deduplication, live read-only ages, proxy browser",
     "arcus_key_rotation": "passed (0.5.12): held-position key update, immutable account scope, failed verification preserves old config, registration/expiry/status/subaccount checks, proxy browser",
     "arcus_key_only_form": "passed (0.5.13): 13 targeted tests, semantic comparison, field-only errors, proxy browser verifies minimal credential-only request",
-    "config_save_without_state_gate": "passed (0.5.14): running and held-position saves, wait for operation lock, preserve ledger, pause and reconcile after apply, proxy browser"
+    "config_save_without_state_gate": "passed (0.5.14): running and held-position saves, wait for operation lock, preserve ledger, pause and reconcile after apply, proxy browser",
+    "arcus_precise_key_errors": "passed (0.5.15): 14 targeted tests, detailed scope mismatch, redact saved and unsaved credentials, proxy browser"
   },
   "child_port": 18000,
   "supported_venues": [
