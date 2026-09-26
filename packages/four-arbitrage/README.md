@@ -1,6 +1,10 @@
 # 价差高频套利管理节点（Linux x86_64）
 
-版本 **0.5.13**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus 的混合工具现已接入 pandazhai.com 管理中心。
+版本 **0.5.14**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus 的混合工具现已接入 pandazhai.com 管理中心。
+
+## 0.5.14 配置保存移除状态拦截
+
+运行或持仓状态不再阻止保存；等待当前操作结束后应用配置，保留账本并暂停，核对后恢复。详见 [更新说明](RELEASE-0.5.14.md)。
 
 ## 0.5.13 Arcus 密钥专用保存
 
