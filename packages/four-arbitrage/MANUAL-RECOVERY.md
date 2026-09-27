@@ -16,3 +16,7 @@
 - https://popdex.xyz/docs/api/trade/orders/Get-Order-Fills
 
 验证限于模拟 HTTP、模拟账户和全拦截浏览器页面；不以模拟通过代替实盘接口或真实补单验证。
+
+## GRVT（0.5.29 新增）
+
+GRVT 已接入相同的候选、预览和确认关联流程；要求原腿零成交且终态可证明、补单完全成交、子账户/市场/方向/数量/时间一致、全平台实际仓位匹配且无挂单。原请求未知仍不可用用户声明绕过。详见 [GRVT 接入说明](docs/GRVT-INTEGRATION.md)。
