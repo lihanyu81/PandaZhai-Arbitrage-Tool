@@ -1,6 +1,6 @@
 {
   "tool": "four-arbitrage",
-  "version": "0.5.27",
+  "version": "0.5.28",
   "platform": "linux-x86_64",
   "format": "PyInstaller single-file executable",
   "artifacts": [
@@ -14,7 +14,7 @@
   "default_port": 9100,
   "manager_registration_included": true,
   "verification": {
-    "automated_tests": 548,
+    "automated_tests": 555,
     "packaged_doctor": "passed",
     "demo_browser": "passed",
     "live_orders_sent": 0,
@@ -70,7 +70,9 @@
     "manual_recovery_multi_venue": "passed: Lighter, Robinhood Lighter, PopDEX mocked history, fills, identity, preview/confirm and browser checks; Arcus regression preserved",
     "flatten_current_asset": "passed: simulated reduce-only exits, unknown-order handling, retries and restart persistence; no live flatten invoked",
     "snapshot_performance": "scoped ledger read cache and indexed cycle lookup; serialized dashboard refresh",
-    "deployed_read_only": "0.5.27: four configured venue API checks, market updates, account reads and balanced reconciliation; no test orders"
+    "deployed_read_only": "0.5.28: four configured venue API checks, market updates, account reads and balanced reconciliation; no test orders",
+    "popdex_text_heartbeat": "passed: periodic text ping, pong filtering, timeout invalidation, public/account resubscription and cancellation cleanup; no real test orders",
+    "popdex_text_heartbeat_live_probe": "same-server read-only fixed heartbeat helper survived 185 seconds and received 199 market messages; old control-frame-only connection failed after 141 seconds"
   },
   "child_port": 18000,
   "supported_venues": [

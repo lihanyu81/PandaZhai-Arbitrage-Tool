@@ -1,6 +1,6 @@
 # 价差高频套利管理节点（Linux x86_64）
 
-版本 **0.5.27**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus 的混合工具现已接入 pandazhai.com 管理中心。
+版本 **0.5.28**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus 的混合工具现已接入 pandazhai.com 管理中心。
 
 ## 老版本升级
 
@@ -12,6 +12,10 @@ sudo bash /tmp/pandazhai-install.sh four-arbitrage --port 9100
 ```
 
 安装器备份并保留配置、2FA 与交易记录。升级后在管理中心打开工作区，核对版本与仓位，再手动恢复交易。
+
+## 0.5.28 PopDEX 文本心跳修复
+
+行情流和账户订单/成交流增加文本心跳与超时重连，修复约两分钟周期断开。详见 [更新说明](RELEASE-0.5.28.md)。
 
 ## 0.5.27 跨平台手动补单关联
 
