@@ -1,6 +1,6 @@
 {
   "tool": "four-arbitrage",
-  "version": "0.5.30",
+  "version": "0.5.31",
   "platform": "linux-x86_64",
   "format": "PyInstaller single-file executable",
   "artifacts": [
@@ -92,7 +92,7 @@
     }
   },
   "verification": {
-    "automated_tests": 762,
+    "automated_tests": 776,
     "packaged_doctor": "passed (9 adapters)",
     "grvt_mock_tests": 51,
     "offline_workbench_browser": "passed",
@@ -105,6 +105,7 @@
     "live_node_deployment": "recorded separately after publication",
     "manager_proxy_browser": "passed: current source manager + frozen panda-node and panda-four; 2/4/8 venue selection, 2FA, proxy, config, GRVT fields, stop; isolated demo only",
     "legacy_frozen_manager_browser": "failed: old 2026-09-24 manager rewrites /risk-threshold suffix; current manager source has existing fix; no manager deployment performed",
-    "execution_timing_and_concurrent_checks": "passed: independent leg persistence, all-venue failure barrier, cancellation drains readers, first confirmation preserved"
+    "execution_timing_and_concurrent_checks": "passed: independent leg persistence, all-venue failure barrier, cancellation drains readers, first confirmation preserved",
+    "preflight_and_request_timing": "passed: 14 targeted tests; concurrent failure/cancellation drains, pause and signal recheck, cache/coalescing/rate/cooldown, HTTP duration, redaction and bounded contexts"
   }
 }
