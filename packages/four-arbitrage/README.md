@@ -1,6 +1,6 @@
 # 价差高频套利管理节点（Linux x86_64）
 
-版本 **0.5.31**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus、GRVT 的混合工具现已接入 pandazhai.com 管理中心。
+版本 **0.5.32**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus、GRVT 的混合工具现已接入 pandazhai.com 管理中心。
 
 ## 老版本升级
 
@@ -12,6 +12,10 @@ sudo bash /tmp/pandazhai-install.sh four-arbitrage --port 9100
 ```
 
 安装器备份并保留配置、2FA 与交易记录。升级后在管理中心打开工作区，核对版本与仓位，再手动恢复交易。
+
+## 0.5.32 Arcus 请求等待来源诊断
+
+补充请求用途、前驱额度请求和 HTTP 调用时间，覆盖下单期间 REST 补查；保持请求频率、缓存及交易风控行为。详见 [更新说明](RELEASE-0.5.32.md)。
 
 ## 0.5.31 并发预检查与请求诊断
 
