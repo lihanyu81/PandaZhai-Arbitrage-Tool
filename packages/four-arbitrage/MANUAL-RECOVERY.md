@@ -34,4 +34,6 @@ GRVT 已接入相同的候选、预览和确认关联流程；要求原腿零成
 - https://docs.qfex.com/api-reference/rest/user/historic-orders
 - https://docs.qfex.com/api-reference/rest/user/user-trades
 
-本次新增通过模拟接口的候选、预览、确认与拒绝路径测试；尚未在真实账户执行关联，亦未部署。
+已通过模拟接口的候选、预览、确认与拒绝路径测试。Entropy 已只读验证真实补单历史；未代用户执行真实关联。QFEX 尚未验证真实补单。
+
+Entropy 历史接口可能同时返回同一订单的 open、filled 等状态事件；身份字段一致时使用 orderStatus 复核当前终态，不能依赖列表排序或相同时间戳挑选状态。
