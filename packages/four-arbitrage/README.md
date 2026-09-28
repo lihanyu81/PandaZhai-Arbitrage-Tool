@@ -1,10 +1,10 @@
-# v0.5.35
-
-修复缓冲下限保存被后台账户刷新锁误拦截：短暂排队，超时不写入；风控条件不变。
-
 # 价差高频套利管理节点（Linux x86_64）
 
-版本 **0.5.34**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus、GRVT 的混合工具现已接入 pandazhai.com 管理中心。
+版本 **0.5.35**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus、GRVT 的混合工具现已接入 pandazhai.com 管理中心。
+
+## v0.5.35
+
+修复缓冲下限保存被后台账户刷新锁误拦截：短暂排队，超时不写入；风控条件不变。
 
 ## 老版本升级
 
