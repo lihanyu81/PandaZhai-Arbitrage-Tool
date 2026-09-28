@@ -1,6 +1,10 @@
 # 价差高频套利管理节点（Linux x86_64）
 
-版本 **0.5.35**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus、GRVT 的混合工具现已接入 pandazhai.com 管理中心。
+版本 **0.5.36**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus、GRVT 的混合工具现已接入 pandazhai.com 管理中心。
+
+## v0.5.36
+
+新增 Entropy、QFEX 手动补单候选查询、预览核验与确认关联。详见 [手动补单说明](MANUAL-RECOVERY.md)。包含缓冲下限保存修复，不自动恢复交易。
 
 ## v0.5.35
 
