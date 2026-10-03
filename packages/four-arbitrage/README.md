@@ -1,6 +1,10 @@
 # 价差高频套利管理节点（Linux x86_64）
 
-版本 **0.5.40**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus、GRVT 的混合工具现已接入 pandazhai.com 管理中心。
+版本 **0.5.60**。支持 Entropy、Lighter、Robinhood Lighter、QFEX、Decibel、Vanta、PopDEX、Arcus、GRVT 的混合工具现已接入 pandazhai.com 管理中心。
+
+## v0.5.60
+
+补齐 Vanta 独立成交明细及真实成交时间，修复已成交订单长期 UNKNOWN；发布平台独立风险限制与分批减仓。当前支持两个标的任务，各交易所仅参与一个任务；升级保留 API 配置与账本。1084 项回归测试及封包浏览器冒烟通过。详见 [更新说明](RELEASE-0.5.60.md)。
 
 ## v0.5.40
 
